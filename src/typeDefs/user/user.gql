@@ -1,0 +1,28 @@
+# Queries
+
+type User {
+  id: ID!
+  email: String!
+  name: String!
+}
+
+type Jwt {
+  token: String!
+}
+
+type Query {
+  profile: User!
+  authUser(email: String! password: String!): Jwt!
+}
+
+# Mutations
+
+input UserInput {
+  email: String!
+  name: String!
+  password: String!
+}
+
+type Mutation {
+  createUser(input: UserInput!): User!
+}

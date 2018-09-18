@@ -1,0 +1,12 @@
+{
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": 3000,
+    "DATABASE_USER": "graphql",
+    "DATABASE_PASS": "graphql",
+    "DATABASE_HOST": "localhost",
+    "DATABASE_PORT": 27017,
+    "DATABASE_DB": "graphql"
+  },
+  "ext": "js json gql"
+}
