@@ -5,13 +5,15 @@ import 'colors'
 import database from '@config/database'
 import typeDefs from '@typeDefs/.'
 import resolvers from '@resolvers/.'
+import { midlewarePersmission } from '@helpers/permissions'
 
 database()
 
 const server = new GraphQLServer({
   typeDefs,
   resolvers,
-  context: req => ({ ...req })
+  context: req => ({ ...req }),
+  middlewares: [ midlewarePersmission ]
 })
 
 const options = { port: process.env.PORT || 4000 }

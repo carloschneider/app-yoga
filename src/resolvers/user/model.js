@@ -1,9 +1,7 @@
 import mongoose from 'mongoose'
 import bcrypt from 'bcrypt'
 
-import {
-  handleDuplicateKey
-} from '@helpers/utils'
+import { handleDuplicateKey } from '@helpers/utils'
 
 const modelName = 'User'
 const collectionName = 'users'

@@ -1,12 +1,13 @@
 import jwt from 'jsonwebtoken'
 
-import secret from '@config/secret'
 import UsersModel from './model'
+import secret from '@config/secret'
+import { getIdByJwt } from '@helpers/utils'
 
 export default {
   Query: {
     profile: async (_, args, context) => {
-      const _id = authorization(context.request.headers.authorization)
+      const _id = context.request.get('_id')
 
       const user = await UsersModel.findOne({
         _id
