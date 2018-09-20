@@ -9,6 +9,7 @@ export default () => {
 
   mongoose.connect(`mongodb://${user}:${pass}@${host}:${port}/${db}`, { useNewUrlParser: true })
   mongoose.set('useCreateIndex', true)
+  mongoose.set('useFindAndModify', false)
 
   const connect = mongoose.connection
 
