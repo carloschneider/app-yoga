@@ -13,14 +13,22 @@ const handleDuplicateKey = (error, doc, next) => {
 }
 
 const getIdByJwt = authorization => {
+  if (typeof authorization === 'undefined') {
+    throw new TypeError('Not authorized')
+  }
+
+  if (authorization.length === 0) {
+    throw new TypeError('Not authorized')
+  }
+
   const [ type, token ] = authorization.split(' ')
 
   if (type !== 'Bearer') {
-    throw new TypeError('Wrong authorization type')
+    throw new TypeError('Not authorized')
   }
 
   if (token.length === 0) {
-    throw new TypeError('Token empty')
+    throw new TypeError('Not authorized')
   }
 
   const { id: _id } = jwt.verify(token, secret)
