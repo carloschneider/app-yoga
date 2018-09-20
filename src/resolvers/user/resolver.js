@@ -2,24 +2,20 @@ import jwt from 'jsonwebtoken'
 
 import UsersModel from './model'
 import secret from '@config/secret'
-import { getIdByJwt } from '@helpers/utils'
 
 export default {
   Query: {
     profile: async (_, args, context) => {
       const _id = context.request.get('_id')
+      const query = { _id }
 
-      const user = await UsersModel.findOne({
-        _id
-      }).exec()
-
-      return user
+      return UsersModel.findOne(query).exec()
     },
 
     authUser: async (_, { email, password }) => {
-      const user = await UsersModel.findOne({
-        email
-      }, 'password').exec()
+      const query = { email }
+
+      const user = await UsersModel.findOne(query, 'password').exec()
 
       if (user === null) {
         throw new TypeError('User not found')
@@ -44,6 +40,15 @@ export default {
       const User = new UsersModel(input)
 
       return User.save()
+    },
+
+    updateUser: async (_, { input }, context) => {
+      const _id = context.request.get('_id')
+      const query = { _id }
+      const update = { $set: input }
+      const options = { new: true }
+
+      return UsersModel.findOneAndUpdate(query, update, options).exec()
     }
   }
 }

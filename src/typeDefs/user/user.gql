@@ -23,6 +23,12 @@ input UserInput {
   password: String!
 }
 
+input UpdateUserInput {
+  email: String!
+  name: String!
+}
+
 type Mutation {
   createUser(input: UserInput!): User!
+  updateUser(input: UpdateUserInput!): User!
 }
