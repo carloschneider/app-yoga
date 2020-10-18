@@ -21,7 +21,7 @@
     "bcrypt": "^3.0.8",
     "colors": "^1.4.0",
     "graphql-yoga": "^1.16.2",
-    "jsonwebtoken": "^8.3.0",
+    "jsonwebtoken": "^8.5.1",
     "merge-graphql-schemas": "^1.5.4",
     "module-alias": "^2.1.0",
     "mongoose": "^5.2.14"
